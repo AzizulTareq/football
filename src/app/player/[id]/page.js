@@ -30,3 +30,5 @@ const index = async ({ params }) => {
 };
 
 export default index;
+
+export const dynamic = "force-static";
