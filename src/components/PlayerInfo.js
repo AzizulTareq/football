@@ -1,8 +1,13 @@
+"use client";
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Checkbox } from "@mui/material";
 import Image from "next/image";
 
-const Player = ({ player }) => {
+const PlayerInfo = ({ player, onSelect, selected, shouldHaveCheckbox }) => {
+  const handleChange = (event) => {
+    onSelect(player, event.target.checked);
+  };
+
   return (
     <Box
       sx={{
@@ -12,18 +17,28 @@ const Player = ({ player }) => {
         borderRadius: "7px",
         padding: 2,
         cursor: "pointer",
+        position: "relative",
         "&:hover": {
           boxShadow: 6,
         },
       }}
     >
+      {shouldHaveCheckbox && (
+        <Checkbox
+          checked={selected}
+          onChange={handleChange}
+          sx={{ position: "absolute", top: 8, right: 8 }}
+        />
+      )}
+
       <Box sx={{ marginRight: 2 }}>
-        <Image
+        {/* <Image
           height={120}
           width={120}
           alt={player?.name}
           src={player?.image}
-        />
+        /> */}
+        Image
       </Box>
       <Box>
         <Typography sx={{ fontWeight: 700, fontSize: "16px" }}>
@@ -48,4 +63,4 @@ const Player = ({ player }) => {
   );
 };
 
-export default Player;
+export default PlayerInfo;

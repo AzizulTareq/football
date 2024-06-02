@@ -81,7 +81,7 @@ const PlayersList = ({ players }) => {
                 href={`/player/${player.id}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <PlayerInfo player={player} />
+                <PlayerInfo player={player} shouldHaveCheckbox={false} />
               </Link>
             </Grid>
           ))}
