@@ -38,7 +38,6 @@ const PlayerInfo = ({ player, onSelect, selected, shouldHaveCheckbox }) => {
           alt={player?.name}
           src={player?.image}
         />
-        Image
       </Box>
       <Box>
         <Typography sx={{ fontWeight: 700, fontSize: "16px" }}>

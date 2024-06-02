@@ -58,7 +58,7 @@ function Navbar() {
               textDecoration: "none",
             }}
           >
-            <Link href="create-team">Create Team</Link>
+            Logo
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -92,7 +92,7 @@ function Navbar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link href="create-team">Create Team</Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -118,13 +118,13 @@ function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
+              <Box
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
-              </Button>
+                <Link href="create-team">Create Team</Link>
+              </Box>
             ))}
           </Box>
 
