@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import PropTypes from "prop-types"; // Import PropTypes for type checking
 import PlayerInfo from "@/components/PlayerInfo";
 import CustomModal from "../CustomModal";
 import {
@@ -24,7 +25,7 @@ const formations = {
   "5-3-2": { goalkeepers: 1, defenders: 5, midfielders: 3, forwards: 2 },
 };
 
-const CreateTeam = ({ players }) => {
+const CreateTeam = ({ players = [] }) => {
   const [marketValueRange, setMarketValueRange] = useState({
     min: 0,
     max: Infinity,
@@ -141,7 +142,7 @@ const CreateTeam = ({ players }) => {
         >
           <Box sx={{ display: "flex" }}>
             {/* Forwards */}
-            {forwards.map((player, index) => (
+            {forwards.map((player) => (
               <Box
                 key={player.id}
                 sx={{
@@ -169,7 +170,7 @@ const CreateTeam = ({ players }) => {
           </Box>
           <Box sx={{ display: "flex" }}>
             {/* Midfielders */}
-            {midfielders.map((player, index) => (
+            {midfielders.map((player) => (
               <Box
                 key={player.id}
                 sx={{
@@ -197,7 +198,7 @@ const CreateTeam = ({ players }) => {
           </Box>
           {/* Defenders */}
           <Box sx={{ display: "flex" }}>
-            {defenders.map((player, index) => (
+            {defenders.map((player) => (
               <Box
                 key={player.id}
                 sx={{
@@ -225,7 +226,7 @@ const CreateTeam = ({ players }) => {
           </Box>
           {/* Goalkeeper */}
           <Box sx={{ display: "flex" }}>
-            {goalkeepers.map((player, index) => (
+            {goalkeepers.map((player) => (
               <Box
                 key={player.id}
                 sx={{
@@ -376,6 +377,26 @@ const CreateTeam = ({ players }) => {
       </CustomModal>
     </div>
   );
+};
+
+CreateTeam.propTypes = {
+  players: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      marketValue: PropTypes.shape({
+        value: PropTypes.number.isRequired,
+      }).isRequired,
+      age: PropTypes.number.isRequired,
+      isGoalkeeper: PropTypes.bool.isRequired,
+      positions: PropTypes.shape({
+        first: PropTypes.shape({
+          group: PropTypes.string.isRequired,
+        }).isRequired,
+      }).isRequired,
+      image: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default CreateTeam;
