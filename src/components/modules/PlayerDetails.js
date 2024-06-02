@@ -4,13 +4,11 @@ import { Container, Grid, Typography, CircularProgress } from "@mui/material";
 import Image from "next/image";
 
 const PlayerDetails = ({ playerDetails }) => {
-  console.log(playerDetails);
   if (!playerDetails) {
     return <CircularProgress />;
   }
 
   const { data } = playerDetails;
-  console.log(data);
 
   return (
     <Container>

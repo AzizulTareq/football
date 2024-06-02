@@ -32,12 +32,12 @@ const PlayerInfo = ({ player, onSelect, selected, shouldHaveCheckbox }) => {
       )}
 
       <Box sx={{ marginRight: 2 }}>
-        {/* <Image
+        <Image
           height={120}
           width={120}
           alt={player?.name}
           src={player?.image}
-        /> */}
+        />
         Image
       </Box>
       <Box>
