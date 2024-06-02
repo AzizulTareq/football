@@ -15,7 +15,7 @@ const PlayerDetails = ({ playerDetails }) => {
   return (
     <Container>
       <Grid container spacing={4} justify="center">
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Image
             src={data?.details?.player?.imageLarge}
             alt="Player image"
@@ -23,8 +23,22 @@ const PlayerDetails = ({ playerDetails }) => {
             width={400}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="h3">{data?.details?.player?.name}</Typography>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h4">{data?.details?.player?.name}</Typography>
+          <Typography sx={{ fontSize: "14px" }}>
+            {data?.share?.description}
+          </Typography>
+          <Typography sx={{ fontSize: "14px", display: "flex" }}>
+            <span style={{ fontWeight: "700", paddingRight: "3px" }}>From</span>
+            {data?.details?.player?.nationalities[0]?.name}{" "}
+          </Typography>
+          <Typography sx={{ fontSize: "14px", display: "flex" }}>
+            <span style={{ fontWeight: "700", paddingRight: "3px" }}>
+              Market value
+            </span>
+            {data?.details?.player?.marketValue?.currency}{" "}
+            {data?.details?.player?.marketValue?.value}
+          </Typography>
         </Grid>
       </Grid>
     </Container>
